@@ -183,8 +183,8 @@ export function useLatestBlock() {
     }
   }, [latestBlock, updateLatestBlock])
 
-  //return latestBlock
-  return 13274266
+  return latestBlock
+  //return 14837868
 }
 
 export function useCurrentCurrency() {

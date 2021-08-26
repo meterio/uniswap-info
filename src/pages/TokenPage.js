@@ -129,8 +129,8 @@ function TokenPage({ address, history }) {
     oneDayVolumeUSD || oneDayVolumeUSD === 0
       ? formattedNum(oneDayVolumeUSD === 0 ? oneDayVolumeUT : oneDayVolumeUSD, true)
       : oneDayVolumeUSD === 0
-      ? '$0'
-      : '-'
+        ? '$0'
+        : '-'
 
   // mark if using untracked volume
   const [usingUtVolume, setUsingUtVolume] = useState(false)
@@ -203,7 +203,7 @@ function TokenPage({ address, history }) {
             <RowBetween style={{ flexWrap: 'wrap', marginBottom: '2rem', alignItems: 'flex-start' }}>
               <RowFixed style={{ flexWrap: 'wrap' }}>
                 <RowFixed style={{ alignItems: 'baseline' }}>
-                  <TokenLogo address={address} size="32px" style={{ alignSelf: 'center' }} />
+                  <TokenLogo symbol={formattedSymbol} address={address} size="32px" style={{ alignSelf: 'center' }} />
                   <TYPE.main fontSize={below1080 ? '1.5rem' : '2rem'} fontWeight={500} style={{ margin: '0 1rem' }}>
                     <RowFixed gap="6px">
                       <FormattedName text={name ? name + ' ' : ''} maxCharacters={16} style={{ marginRight: '6px' }} />{' '}

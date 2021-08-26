@@ -1,13 +1,7 @@
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
-import { useAllPairData, usePairData } from './PairData'
-import { client, stakingClient } from '../apollo/client'
-import {
-  USER_TRANSACTIONS,
-  USER_POSITIONS,
-  USER_HISTORY,
-  PAIR_DAY_DATA_BULK,
-  MINING_POSITIONS,
-} from '../apollo/queries'
+import { usePairData } from './PairData'
+import { client } from '../apollo/client'
+import { USER_TRANSACTIONS, USER_POSITIONS, USER_HISTORY, PAIR_DAY_DATA_BULK } from '../apollo/queries'
 import { useTimeframe, useStartTimestamp } from './Application'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -19,13 +13,11 @@ dayjs.extend(utc)
 
 const UPDATE_TRANSACTIONS = 'UPDATE_TRANSACTIONS'
 const UPDATE_POSITIONS = 'UPDATE_POSITIONS '
-const UPDATE_MINING_POSITIONS = 'UPDATE_MINING_POSITIONS'
 const UPDATE_USER_POSITION_HISTORY = 'UPDATE_USER_POSITION_HISTORY'
 const UPDATE_USER_PAIR_RETURNS = 'UPDATE_USER_PAIR_RETURNS'
 
 const TRANSACTIONS_KEY = 'TRANSACTIONS_KEY'
 const POSITIONS_KEY = 'POSITIONS_KEY'
-const MINING_POSITIONS_KEY = 'MINING_POSITIONS_KEY'
 const USER_SNAPSHOTS = 'USER_SNAPSHOTS'
 const USER_PAIR_RETURNS_KEY = 'USER_PAIR_RETURNS_KEY'
 
@@ -43,29 +35,23 @@ function reducer(state, { type, payload }) {
         ...state,
         [account]: {
           ...state?.[account],
-          [TRANSACTIONS_KEY]: transactions,
-        },
+          [TRANSACTIONS_KEY]: transactions
+        }
       }
     }
     case UPDATE_POSITIONS: {
       const { account, positions } = payload
       return {
         ...state,
-        [account]: { ...state?.[account], [POSITIONS_KEY]: positions },
+        [account]: { ...state?.[account], [POSITIONS_KEY]: positions }
       }
     }
-    case UPDATE_MINING_POSITIONS: {
-      const { account, miningPositions } = payload
-      return {
-        ...state,
-        [account]: { ...state?.[account], [MINING_POSITIONS_KEY]: miningPositions },
-      }
-    }
+
     case UPDATE_USER_POSITION_HISTORY: {
       const { account, historyData } = payload
       return {
         ...state,
-        [account]: { ...state?.[account], [USER_SNAPSHOTS]: historyData },
+        [account]: { ...state?.[account], [USER_SNAPSHOTS]: historyData }
       }
     }
 
@@ -77,9 +63,9 @@ function reducer(state, { type, payload }) {
           ...state?.[account],
           [USER_PAIR_RETURNS_KEY]: {
             ...state?.[account]?.[USER_PAIR_RETURNS_KEY],
-            [pairAddress]: data,
-          },
-        },
+            [pairAddress]: data
+          }
+        }
       }
     }
 
@@ -99,8 +85,8 @@ export default function Provider({ children }) {
       type: UPDATE_TRANSACTIONS,
       payload: {
         account,
-        transactions,
-      },
+        transactions
+      }
     })
   }, [])
 
@@ -109,18 +95,8 @@ export default function Provider({ children }) {
       type: UPDATE_POSITIONS,
       payload: {
         account,
-        positions,
-      },
-    })
-  }, [])
-
-  const updateMiningPositions = useCallback((account, miningPositions) => {
-    dispatch({
-      type: UPDATE_MINING_POSITIONS,
-      payload: {
-        account,
-        miningPositions,
-      },
+        positions
+      }
     })
   }, [])
 
@@ -129,8 +105,8 @@ export default function Provider({ children }) {
       type: UPDATE_USER_POSITION_HISTORY,
       payload: {
         account,
-        historyData,
-      },
+        historyData
+      }
     })
   }, [])
 
@@ -140,19 +116,16 @@ export default function Provider({ children }) {
       payload: {
         account,
         pairAddress,
-        data,
-      },
+        data
+      }
     })
   }, [])
 
   return (
     <UserContext.Provider
       value={useMemo(
-        () => [
-          state,
-          { updateTransactions, updatePositions, updateMiningPositions, updateUserSnapshots, updateUserPairReturns },
-        ],
-        [state, updateTransactions, updatePositions, updateMiningPositions, updateUserSnapshots, updateUserPairReturns]
+        () => [state, { updateTransactions, updatePositions, updateUserSnapshots, updateUserPairReturns }],
+        [state, updateTransactions, updatePositions, updateUserSnapshots, updateUserPairReturns]
       )}
     >
       {children}
@@ -169,9 +142,9 @@ export function useUserTransactions(account) {
         let result = await client.query({
           query: USER_TRANSACTIONS,
           variables: {
-            user: account,
+            user: account
           },
-          fetchPolicy: 'no-cache',
+          fetchPolicy: 'no-cache'
         })
         if (result?.data) {
           updateTransactions(account, result?.data)
@@ -208,9 +181,9 @@ export function useUserSnapshots(account) {
             query: USER_HISTORY,
             variables: {
               skip: skip,
-              user: account,
+              user: account
             },
-            fetchPolicy: 'cache-first',
+            fetchPolicy: 'cache-first'
           })
           allResults = allResults.concat(result.data.liquidityPositionSnapshots)
           if (result.data.liquidityPositionSnapshots.length < 1000) {
@@ -252,7 +225,7 @@ export function useUserPositionChart(position, account) {
   const pairSnapshots =
     snapshots &&
     position &&
-    snapshots.filter((currentSnapshot) => {
+    snapshots.filter(currentSnapshot => {
       return currentSnapshot.pair.id === position.pair.id
     })
 
@@ -294,7 +267,7 @@ export function useUserPositionChart(position, account) {
     currentPairData,
     currentETHPrice,
     updateUserPairReturns,
-    position.pair.id,
+    position.pair.id
   ])
 
   return formattedHistory
@@ -362,9 +335,9 @@ export function useUserLiquidityChart(account) {
 
       // get all day datas where date is in this list, and pair is in pair list
       let {
-        data: { pairDayDatas },
+        data: { pairDayDatas }
       } = await client.query({
-        query: PAIR_DAY_DATA_BULK(pairs, startDateTimestamp),
+        query: PAIR_DAY_DATA_BULK(pairs, startDateTimestamp)
       })
 
       const formattedHistory = []
@@ -376,7 +349,7 @@ export function useUserLiquidityChart(account) {
         const timestampCeiling = dayTimestamp + 86400
 
         // cycle through relevant positions and update ownership for any that we need to
-        const relevantPositions = history.filter((snapshot) => {
+        const relevantPositions = history.filter(snapshot => {
           return snapshot.timestamp < timestampCeiling && snapshot.timestamp > dayTimestamp
         })
         for (const index in relevantPositions) {
@@ -385,21 +358,21 @@ export function useUserLiquidityChart(account) {
           if (!ownershipPerPair[position.pair.id]) {
             ownershipPerPair[position.pair.id] = {
               lpTokenBalance: position.liquidityTokenBalance,
-              timestamp: position.timestamp,
+              timestamp: position.timestamp
             }
           }
           // case where more recent timestamp is found for pair
           if (ownershipPerPair[position.pair.id] && ownershipPerPair[position.pair.id].timestamp < position.timestamp) {
             ownershipPerPair[position.pair.id] = {
               lpTokenBalance: position.liquidityTokenBalance,
-              timestamp: position.timestamp,
+              timestamp: position.timestamp
             }
           }
         }
 
-        const relavantDayDatas = Object.keys(ownershipPerPair).map((pairAddress) => {
+        const relavantDayDatas = Object.keys(ownershipPerPair).map(pairAddress => {
           // find last day data after timestamp update
-          const dayDatasForThisPair = pairDayDatas.filter((dayData) => {
+          const dayDatasForThisPair = pairDayDatas.filter(dayData => {
             return dayData.pairAddress === pairAddress
           })
           // find the most recent reference to pair liquidity data
@@ -415,21 +388,17 @@ export function useUserLiquidityChart(account) {
 
         // now cycle through pair day datas, for each one find usd value = ownership[address] * reserveUSD
         const dailyUSD = relavantDayDatas.reduce((totalUSD, dayData) => {
-          if (dayData) {
-            return (totalUSD =
-              totalUSD +
-              (ownershipPerPair[dayData.pairAddress]
-                ? (parseFloat(ownershipPerPair[dayData.pairAddress].lpTokenBalance) / parseFloat(dayData.totalSupply)) *
-                parseFloat(dayData.reserveUSD)
-                : 0))
-          } else {
-            return totalUSD
-          }
+          return (totalUSD =
+            totalUSD +
+            (ownershipPerPair[dayData.pairAddress]
+              ? (parseFloat(ownershipPerPair[dayData.pairAddress].lpTokenBalance) / parseFloat(dayData.totalSupply)) *
+              parseFloat(dayData.reserveUSD)
+              : 0))
         }, 0)
 
         formattedHistory.push({
           date: dayTimestamp,
-          valueUSD: dailyUSD,
+          valueUSD: dailyUSD
         })
       }
 
@@ -456,17 +425,17 @@ export function useUserPositions(account) {
         let result = await client.query({
           query: USER_POSITIONS,
           variables: {
-            user: account,
+            user: account
           },
-          fetchPolicy: 'no-cache',
+          fetchPolicy: 'no-cache'
         })
         if (result?.data?.liquidityPositions) {
           let formattedPositions = await Promise.all(
-            result?.data?.liquidityPositions.map(async (positionData) => {
+            result?.data?.liquidityPositions.map(async positionData => {
               const returnData = await getLPReturnsOnPair(account, positionData.pair, ethPrice, snapshots)
               return {
                 ...positionData,
-                ...returnData,
+                ...returnData
               }
             })
           )
@@ -482,40 +451,4 @@ export function useUserPositions(account) {
   }, [account, positions, updatePositions, ethPrice, snapshots])
 
   return positions
-}
-
-export function useMiningPositions(account) {
-  const [state, { updateMiningPositions }] = useUserContext()
-  const allPairData = useAllPairData()
-  const miningPositions = state?.[account]?.[MINING_POSITIONS_KEY]
-
-  const snapshots = useUserSnapshots(account)
-
-  useEffect(() => {
-    async function fetchData(account) {
-      try {
-        let miningPositionData = []
-        let result = await stakingClient.query({
-          query: MINING_POSITIONS(account),
-          fetchPolicy: 'no-cache',
-        })
-        if (!result?.data?.user?.miningPosition) {
-          return
-        }
-        miningPositionData = result.data.user.miningPosition
-        for (const miningPosition of miningPositionData) {
-          const pairAddress = miningPosition.miningPool.pair.id
-          miningPosition.pairData = allPairData[pairAddress]
-        }
-        updateMiningPositions(account, miningPositionData)
-      } catch (e) {
-        console.log(e)
-      }
-    }
-
-    if (!miningPositions && account && snapshots) {
-      fetchData(account)
-    }
-  }, [account, miningPositions, updateMiningPositions, snapshots, allPairData])
-  return miningPositions
 }

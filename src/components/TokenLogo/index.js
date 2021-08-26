@@ -31,7 +31,8 @@ const StyledEthereumLogo = styled.div`
   }
 `
 
-export default function TokenLogo({ address, header = false, size = '24px', ...rest }) {
+export default function TokenLogo({ symbol, address, header = false, size = '24px', ...rest }) {
+
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -67,10 +68,13 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
-    address
-  )}/logo.png`
 
+  var path = 'https://raw.githubusercontent.com/meterio/token-list/master/data/MTRG/logo.png'
+  if (symbol) {
+    symbol = symbol === 'MTR' ? 'MTRG' : symbol;
+    path = `https://raw.githubusercontent.com/meterio/token-list/master/data/${symbol}/logo.png`
+
+  }
   return (
     <Inline>
       <Image

@@ -132,8 +132,8 @@ function PairPage({ pairAddress, history }) {
   const liquidity = trackedReserveUSD
     ? formattedNum(trackedReserveUSD, true)
     : reserveUSD
-    ? formattedNum(reserveUSD, true)
-    : '-'
+      ? formattedNum(reserveUSD, true)
+      : '-'
   const liquidityChange = formattedPercent(liquidityChangeUSD)
 
   // mark if using untracked liquidity
@@ -147,8 +147,8 @@ function PairPage({ pairAddress, history }) {
     oneDayVolumeUSD || oneDayVolumeUSD === 0
       ? formattedNum(oneDayVolumeUSD === 0 ? oneDayVolumeUntracked : oneDayVolumeUSD, true)
       : oneDayVolumeUSD === 0
-      ? '$0'
-      : '-'
+        ? '$0'
+        : '-'
 
   // mark if using untracked volume
   const [usingUtVolume, setUsingUtVolume] = useState(false)
@@ -286,24 +286,22 @@ function PairPage({ pairAddress, history }) {
             >
               <FixedPanel onClick={() => history.push(`/token/${token0?.id}`)}>
                 <RowFixed>
-                  <TokenLogo address={token0?.id} size={'16px'} />
+                  <TokenLogo symbol={token0?.symbol} address={token0?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
-                      ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${
-                          parseFloat(token0?.derivedETH) ? '(' + token0USD + ')' : ''
-                        }`
+                      ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${parseFloat(token0?.derivedETH) ? '(' + token0USD + ')' : ''
+                      }`
                       : '-'}
                   </TYPE.main>
                 </RowFixed>
               </FixedPanel>
               <FixedPanel onClick={() => history.push(`/token/${token1?.id}`)}>
                 <RowFixed>
-                  <TokenLogo address={token1?.id} size={'16px'} />
+                  <TokenLogo symbol={token1?.symbol} address={token1?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
-                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${
-                          parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
-                        }`
+                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
+                      }`
                       : '-'}
                   </TYPE.main>
                 </RowFixed>
@@ -363,7 +361,7 @@ function PairPage({ pairAddress, history }) {
                     </RowBetween>
                     <Hover onClick={() => history.push(`/token/${token0?.id}`)} fade={true}>
                       <AutoRow gap="4px">
-                        <TokenLogo address={token0?.id} />
+                        <TokenLogo symbol={token0?.symbol} address={token0?.id} />
                         <TYPE.main fontSize={20} lineHeight={1} fontWeight={500}>
                           <RowFixed>
                             {reserve0 ? formattedNum(reserve0) : ''}{' '}
@@ -374,7 +372,7 @@ function PairPage({ pairAddress, history }) {
                     </Hover>
                     <Hover onClick={() => history.push(`/token/${token1?.id}`)} fade={true}>
                       <AutoRow gap="4px">
-                        <TokenLogo address={token1?.id} />
+                        <TokenLogo symbol={token1?.symbol} address={token1?.id} />
                         <TYPE.main fontSize={20} lineHeight={1} fontWeight={500}>
                           <RowFixed>
                             {reserve1 ? formattedNum(reserve1) : ''}{' '}
@@ -462,8 +460,8 @@ function PairPage({ pairAddress, history }) {
                     </AutoRow>
                   </Column>
                   <ButtonLight color={backgroundColor}>
-                    <Link color={backgroundColor} external href={'https://etherscan.io/address/' + pairAddress}>
-                      View on Etherscan ↗
+                    <Link color={backgroundColor} external href={'https://scan.meter.io/address/' + pairAddress}>
+                      View on Meterscan ↗
                     </Link>
                   </ButtonLight>
                 </TokenDetailsLayout>
