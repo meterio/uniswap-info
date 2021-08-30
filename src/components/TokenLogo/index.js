@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import web3 from 'web3';
 import styled from 'styled-components'
 import { isAddress } from '../../utils/index.js'
 import PlaceHolder from '../../assets/placeholder.png'
 import EthereumLogo from '../../assets/eth.png'
-
+import { tokens } from './swap_tokens_list.json'
 const BAD_IMAGES = {}
 
 const Inline = styled.div`
@@ -67,14 +68,20 @@ export default function TokenLogo({ symbol, address, header = false, size = '24p
       </StyledEthereumLogo>
     )
   }
+  var parsedList = JSON.parse(JSON.stringify(tokens));
 
 
-  var path = 'https://raw.githubusercontent.com/meterio/token-list/master/data/MTRG/logo.png'
-  if (symbol) {
-    symbol = symbol === 'MTR' ? 'MTRG' : symbol;
-    path = `https://raw.githubusercontent.com/meterio/token-list/master/data/${symbol}/logo.png`
 
-  }
+
+  var path = `https://raw.githubusercontent.com/meterio/token-list/master/data/${symbol ? symbol : 'MTRG'}/logo.png`
+
+  symbol = symbol === 'MTR' ? 'MTRG' : symbol;
+  parsedList.map((token_data) => {
+
+    path = web3.utils.toChecksumAddress(token_data.address) === web3.utils.toChecksumAddress(address) ? token_data.logoURI : path
+  })
+
+
   return (
     <Inline>
       <Image

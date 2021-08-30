@@ -164,8 +164,8 @@ function SideNav({ history }) {
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
-              <Link href="https://meter.io" target="_blank">
-                meter.io
+              <Link href="https://voltswap.finance" target="_blank">
+                voltswap.finance
               </Link>
             </HeaderText>
             <HeaderText>
@@ -174,7 +174,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://docs.meter.io/" target="_blank">
+              <Link href="https://docs.voltswap.finance" target="_blank">
                 Docs
               </Link>
             </HeaderText>
