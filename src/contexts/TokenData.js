@@ -232,6 +232,7 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
         let oneDayHistory = oneDayData?.[token.id]
         let twoDayHistory = twoDayData?.[token.id]
 
+
         // catch the case where token wasnt in top list in previous days
         if (!oneDayHistory) {
           let oneDayResult = await client.query({
@@ -249,6 +250,7 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
         }
 
         // calculate percentage changes and daily changes
+
         const [oneDayVolumeUSD, volumeChangeUSD] = get2DayPercentChange(
           data.tradeVolumeUSD,
           oneDayHistory?.tradeVolumeUSD ?? 0,
