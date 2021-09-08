@@ -12,7 +12,7 @@ export const client = new ApolloClient({
 
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://graphhealth.meter.io/graphql'
+    uri: 'http://18.141.138.134:8030/graphql'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
@@ -26,6 +26,9 @@ export const v1Client = new ApolloClient({
   shouldBatch: true
 })
 
+
+
+//block client will be updated to http://18.141.138.134:8000/subgraphs/name/meter/blocks after an appreciable blocks sync
 export const blockClient = new ApolloClient({
   link: new HttpLink({
     uri: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks'

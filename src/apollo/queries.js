@@ -3,7 +3,7 @@ import { FACTORY_ADDRESS, BUNDLE_ID } from '../constants'
 
 export const SUBGRAPH_HEALTH = gql`
   query health {
-    indexingStatusForCurrentVersion(subgraphName: "wowswap") {
+    indexingStatusForCurrentVersion(subgraphName: "meterio/uniswap-v2-subgraph") {
       synced
       health
       chains {
@@ -70,6 +70,7 @@ export const GET_BLOCKS = (timestamps) => {
     }`
   })
   queryString += '}'
+
   return gql(queryString)
 }
 

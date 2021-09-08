@@ -170,6 +170,7 @@ export function useLatestBlock() {
         const res = await healthClient.query({
           query: SUBGRAPH_HEALTH
         })
+
         const block = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number
         if (block) {
           updateLatestBlock(block)
@@ -182,6 +183,7 @@ export function useLatestBlock() {
       fetch()
     }
   }, [latestBlock, updateLatestBlock])
+
 
   return latestBlock
   //return 14837868

@@ -1,6 +1,6 @@
 {
     "name": "Voltswap Default List",
-    "timestamp": "2021-08-27T13:23:26.491Z",
+    "timestamp": "",
     "version": {
         "major": 1,
         "minor": 0,
@@ -47,7 +47,7 @@
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/MTRG/logo.png"
         },
         {
-            "name": "Wrapped Ether",
+            "name": "ETH",
             "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
             "symbol": "ETH",
             "decimals": 18,
@@ -55,7 +55,7 @@
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/ETH/logo.png"
         },
         {
-            "name": "USDC from Ethereum on Meter",
+            "name": "USDC",
             "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
             "symbol": "USDC",
             "decimals": 6,
@@ -143,6 +143,22 @@
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/AMPL/logo.png"
         },
         {
+            "name": "BNB",
+            "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+            "symbol": "BNB",
+            "decimals": 18,
+            "chainId": 56,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/BNB/logo.png"
+        },
+        {
+            "name": "BUSD",
+            "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+            "symbol": "BUSD",
+            "decimals": 18,
+            "chainId": 56,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/BUSD/logo.png"
+        },
+        {
             "name": "Cliq Token",
             "address": "0xe795347731Bc547F4E4643F7945738cE2BC18529",
             "symbol": "CLIQ",
@@ -167,6 +183,30 @@
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/UTU/logo.png"
         },
         {
+            "name": "BNB from BSC on Meter",
+            "address": "0xF8BBb44E6fD13632D36fe09eB61820f9A44f5D74",
+            "symbol": "BNB.bsc",
+            "decimals": 18,
+            "chainId": 82,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/BNB/logo.png"
+        },
+        {
+            "name": "BUSD from BSC on Meter",
+            "address": "0x24aA189DfAa76c671c279262F94434770F557c35",
+            "symbol": "BUSD.bsc",
+            "decimals": 18,
+            "chainId": 82,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/BUSD/logo.png"
+        },
+        {
+            "name": "VoltSwap Token",
+            "address": "0x8Df95e66Cb0eF38F91D2776DA3c921768982fBa0",
+            "symbol": "VOLTS",
+            "decimals": 18,
+            "chainId": 82,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/VOLT/logo.png"
+        },
+        {
             "name": "Meter Governance",
             "address": "0x228ebBeE999c6a7ad74A6130E81b12f9Fe237Ba3",
             "symbol": "MTRG",
@@ -175,7 +215,7 @@
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/MTRG/logo.png"
         },
         {
-            "name": "USDC Token",
+            "name": "USDC from Ethereum on Meter",
             "address": "0xd86e243fc0007e6226b07c9a50c9d70d78299eb5",
             "symbol": "USDC.eth",
             "decimals": 6,
@@ -184,7 +224,7 @@
         },
         {
             "name": "USDT from Ethereum on Meter",
-            "address": "0xC3266026DB809f923bF7594d6C3c03363854746c",
+            "address": "0x5Fa41671c48e3C951AfC30816947126CCC8C162e",
             "symbol": "USDT.eth",
             "decimals": 6,
             "chainId": 82,
@@ -192,7 +232,7 @@
         },
         {
             "name": "WBTC from Ethereum on Meter",
-            "address": "0x093Dc064D9E7b7558241E014bAE631F02f684146",
+            "address": "0xc1f6C86ABEe8e2e0B6fd5BD80F0b51fef783635C",
             "symbol": "WBTC.eth",
             "decimals": 18,
             "chainId": 82,
@@ -268,6 +308,14 @@
             "symbol": "WETH",
             "decimals": 18,
             "chainId": 101,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/ETH/logo.png"
+        },
+        {
+            "name": "Wrapped ETH",
+            "address": "0x07446A7e12C2d24d6b180d009e4255aE26fBF018",
+            "symbol": "WETH",
+            "decimals": 18,
+            "chainId": 365,
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/ETH/logo.png"
         },
         {
