@@ -4,7 +4,7 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://18.141.138.134:8000/subgraphs/name/meterio/uniswap-v2-subgraph'
+    uri: 'https://graph.voltswap.finance/subgraphs/name/meterio/uniswap-v2-subgraph'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
@@ -31,7 +31,7 @@ export const v1Client = new ApolloClient({
 //block client will be updated to http://18.141.138.134:8000/subgraphs/name/meter/blocks after an appreciable blocks sync
 export const blockClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks',
+    uri: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks'
   }),
   cache: new InMemoryCache()
 })
