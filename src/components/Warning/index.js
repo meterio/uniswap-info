@@ -56,7 +56,7 @@ export default function Warning({ type, show, setShow, address }) {
   )
 
   return (
-    <WarningWrapper show={show}>
+    <WarningWrapper show={false}>
       <AutoColumn gap="4px">
         <RowFixed>
           <StyledWarningIcon />
