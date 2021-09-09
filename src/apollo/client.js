@@ -12,7 +12,7 @@ export const client = new ApolloClient({
 
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://18.141.138.134:8030/graphql'
+    uri: 'https://graphhealth.meter.io/graphql'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
