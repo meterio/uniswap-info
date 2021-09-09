@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './apollo/client'
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
+import { Route, Switch, HashRouter, Redirect } from 'react-router-dom'
 import GlobalPage from './pages/GlobalPage'
 import TokenPage from './pages/TokenPage'
 import PairPage from './pages/PairPage'
@@ -85,12 +85,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <AppWrapper>
+
         {latestBlock &&
           globalData &&
           Object.keys(globalData).length > 0 &&
           globalChartData &&
           Object.keys(globalChartData).length > 0 ? (
-          <BrowserRouter>
+          <HashRouter>
             <Switch>
               <Route
                 exacts
@@ -173,7 +174,7 @@ function App() {
 
               <Redirect to="/home" />
             </Switch>
-          </BrowserRouter>
+          </HashRouter>
         ) : (
           <LocalLoader fill="true" />
         )}

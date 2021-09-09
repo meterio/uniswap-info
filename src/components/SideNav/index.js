@@ -169,25 +169,22 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="#" target="_blank">
-                V1 Analytics
+              <Link href="https://farm.voltswap.finance" target="_blank">
+                Farm
               </Link>
             </HeaderText>
+
             <HeaderText>
               <Link href="https://docs.voltswap.finance" target="_blank">
                 Docs
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="#" target="_blank">
-                Discord
-              </Link>
-            </HeaderText>
-            <HeaderText>
-              <Link href="#" target="_blank">
+              <Link href="https://t.me/Meter_IO" target="_blank">
                 Twitter
               </Link>
             </HeaderText>
+
             <Toggle isActive={isDark} toggle={toggleDarkMode} />
           </AutoColumn>
           {!below1180 && (
