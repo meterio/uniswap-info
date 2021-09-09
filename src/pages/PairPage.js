@@ -103,7 +103,7 @@ const HoverSpan = styled.span`
 
 const WarningGrouping = styled.div`
 
-  pointer-events: ${({ disabled }) => disabled && 'none'};
+  
 `
 
 function PairPage({ pairAddress, history }) {

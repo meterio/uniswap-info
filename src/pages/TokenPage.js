@@ -85,7 +85,7 @@ const TokenDetailsLayout = styled.div`
 
 const WarningGrouping = styled.div`
  
-  pointer-events: ${({ disabled }) => disabled && 'none'};
+  
 `
 
 function TokenPage({ address, history }) {
