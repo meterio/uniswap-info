@@ -58,6 +58,7 @@ const Center = styled.div`
   background-color: ${({ theme }) => theme.onlyLight};
 `
 
+
 /**
  * Wrap the component with the header and sidebar pinned tab
  */
