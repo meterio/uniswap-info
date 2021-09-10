@@ -51,6 +51,7 @@ function GlobalPage() {
   const transactions = useGlobalTransactions()
   const { totalLiquidityUSD, oneDayVolumeUSD, volumeChangeUSD, liquidityChangeUSD } = useGlobalData()
 
+
   // breakpoints
   const below800 = useMedia('(max-width: 800px)')
 
