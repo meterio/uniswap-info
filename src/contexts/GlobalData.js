@@ -241,7 +241,6 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     data = result.data.uniswapFactories[0]
 
-
     // fetch the historical data
     let oneDayResult = await client.query({
       query: GLOBAL_DATA(oneDayBlock?.number),
@@ -268,7 +267,6 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     const twoWeekData = twoWeekResult.data.uniswapFactories[0]
 
     if (data && oneDayData && twoDayData && twoWeekData) {
-      data.totalLiquidityUSD = parseFloat(data.totalLiquidityUSD)
       let [oneDayVolumeUSD, volumeChangeUSD] = get2DayPercentChange(
         data.totalVolumeUSD,
         oneDayData.totalVolumeUSD ? oneDayData.totalVolumeUSD : 0,
@@ -287,41 +285,35 @@ async function getGlobalData(ethPrice, oldEthPrice) {
         twoDayData.txCount ? twoDayData.txCount : 0
       )
 
-      let {
-        data: { pairs }
-      } = await client.query({
-        query: PAIRS_CURRENT,
-        fetchPolicy: 'cache-first'
-      })
+      // let {
+      //   data: { pairs }
+      // } = await client.query({
+      //   query: PAIRS_CURRENT,
+      //   fetchPolicy: 'cache-first'
+      // })
 
       // format as array of addresses
-      const formattedPairs = pairs.map(pair => {
-        return pair.id
-      })
+      // const formattedPairs = pairs.map(pair => {
+      //   return pair.id
+      // })
 
-      let topPairs = await getBulkPairData(formattedPairs, ethPrice)
-      let topPairsOld = await getBulkPairData(formattedPairs, oldEthPrice)
-      let pairSum = 0, pairSumOld = 0
+      // let topPairs = await getBulkPairData(formattedPairs, ethPrice)
+      // let pairSum = new BigNumber(0)
+      // console.log(topPairs)
+      // topPairs.map(pair => {
 
+      //   pairSum.plus(new BigNumber(pair.reserveUSD))
+      //   console.log(pairSum.toNumber())
+      // })
 
-      topPairs.map(pair => {
-
-        pairSum += Number(pair.reserveUSD)
-
-      })
-
-      topPairsOld.map(pair => {
-
-        pairSumOld += Number(pair.reserveUSD)
-
-      })
+      // console.log(pairSum.toNumber())
 
       // format the total liquidity in USD
-      data.totalLiquidityUSD = pairSum
+      data.totalLiquidityUSD = data.totalLiquidityETH * ethPrice
 
       const liquidityChangeUSD = getPercentChange(
-        data.totalLiquidityETH,
-        oneDayData.totalLiquidityETH
+        data.totalLiquidityETH * ethPrice,
+        oneDayData.totalLiquidityETH * oldEthPrice
       )
 
       // add relevant fields with the calculated amounts
