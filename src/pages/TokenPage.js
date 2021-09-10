@@ -84,8 +84,8 @@ const TokenDetailsLayout = styled.div`
 `
 
 const WarningGrouping = styled.div`
-  opacity: ${({ disabled }) => disabled && '0.4'};
-  pointer-events: ${({ disabled }) => disabled && 'none'};
+ 
+  
 `
 
 function TokenPage({ address, history }) {
