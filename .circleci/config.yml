@@ -1,0 +1,39 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7.0
+jobs:
+  build_and_deploy_mainnet:
+    docker:
+      - image: 'cimg/node:16.7'
+    steps:
+      - checkout
+      - run:
+          name: download & unzip awscli v2
+          command: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
+      - run:
+          name: install awscli v2
+          command: sudo ./aws/install
+      - run:
+          name: install yarn dependencies
+          command: yarn
+      - run:
+          name: production build
+          command: NODE_ENV=production yarn build
+      - run:
+          name: s3 sync
+          command: aws s3 sync ./build/ s3://voltswap-info-main/ --delete --acl public-read
+      - run:
+          name: invalidation
+          command: aws cloudfront create-invalidation --distribution-id E122HAI06IXNWD --paths "/*"
+
+workflows:
+  fresh_deploy:
+    jobs:
+      - build_and_deploy_mainnet:
+          context: aws-s3
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
