@@ -159,6 +159,7 @@ export async function getBlockFromTimestamp(timestamp) {
     fetchPolicy: 'cache-first'
   })
 
+
   return result?.data?.blocks?.[0]?.number
 }
 

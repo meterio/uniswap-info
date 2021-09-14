@@ -18,8 +18,7 @@ import {
   ETH_PRICE,
   ALL_PAIRS,
   ALL_TOKENS,
-  TOP_LPS_PER_PAIRS,
-  PAIRS_CURRENT
+  TOP_LPS_PER_PAIRS
 } from '../apollo/queries'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
 import { useAllPairData, getBulkPairData } from './PairData'
@@ -285,26 +284,8 @@ async function getGlobalData(ethPrice, oldEthPrice) {
         twoDayData.txCount ? twoDayData.txCount : 0
       )
 
-      // let {
-      //   data: { pairs }
-      // } = await client.query({
-      //   query: PAIRS_CURRENT,
-      //   fetchPolicy: 'cache-first'
-      // })
 
-      // format as array of addresses
-      // const formattedPairs = pairs.map(pair => {
-      //   return pair.id
-      // })
 
-      // let topPairs = await getBulkPairData(formattedPairs, ethPrice)
-      // let pairSum = new BigNumber(0)
-      // console.log(topPairs)
-      // topPairs.map(pair => {
-
-      //   pairSum.plus(new BigNumber(pair.reserveUSD))
-      //   console.log(pairSum.toNumber())
-      // })
 
       // console.log(pairSum.toNumber())
 
