@@ -10,6 +10,7 @@ import _Decimal from 'decimal.js-light'
 import toFormat from 'toformat'
 import { timeframeOptions } from '../constants'
 import Numeral from 'numeral'
+const axios = require('axios');
 
 // format libraries
 const Decimal = toFormat(_Decimal)
@@ -130,6 +131,7 @@ export async function splitQuery(query, localClient, vars, list, skipCount = 100
       query: query(...vars, sliced),
       fetchPolicy: 'cache-first'
     })
+
     fetchedData = {
       ...fetchedData,
       ...result.data
@@ -150,14 +152,21 @@ export async function splitQuery(query, localClient, vars, list, skipCount = 100
  * @param {Int} timestamp in seconds
  */
 export async function getBlockFromTimestamp(timestamp) {
+
   let result = await blockClient.query({
     query: GET_BLOCK,
     variables: {
       timestampFrom: timestamp,
       timestampTo: timestamp + 600
     },
+
     fetchPolicy: 'cache-first'
   })
+
+  //  const results = await axios.get(`https://api.meter.io:8000/api/blocks/bestin/${timestamp}/${timestamp + 600}`);
+
+
+
 
 
   return result?.data?.blocks?.[0]?.number
