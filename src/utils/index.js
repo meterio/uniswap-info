@@ -153,6 +153,7 @@ export async function splitQuery(query, localClient, vars, list, skipCount = 100
  */
 export async function getBlockFromTimestamp(timestamp) {
 
+
   let result = await blockClient.query({
     query: GET_BLOCK,
     variables: {
