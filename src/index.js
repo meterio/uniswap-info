@@ -10,6 +10,7 @@ import PairDataContextProvider, { Updater as PairDataContextUpdater } from './co
 import ApplicationContextProvider from './contexts/Application'
 import UserContextProvider from './contexts/User'
 import App from './App'
+import Theta from './Theta'
 
 // initialize GA
 // const GOOGLE_ANALYTICS_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
@@ -48,15 +49,49 @@ function Updaters() {
   )
 }
 
+
+function Meter() {
+
+  return (
+    <ContextProviders>
+      <Updaters />
+      <ThemeProvider>
+        <>
+          <GlobalStyle />
+          <App />
+        </>
+      </ThemeProvider>
+    </ContextProviders>
+  )
+}
+
+
+function Main() {
+
+  let selected_network = window.sessionStorage.getItem("chainId")
+  console.log(selected_network)
+
+
+  if (!selected_network) {
+
+    return (
+      <Meter />
+    )
+
+  }
+
+  if (selected_network === '82') {
+    return <Meter />
+  }
+
+  if (selected_network === '361') {
+    return <Theta />
+  }
+
+}
+
+
 ReactDOM.render(
-  <ContextProviders>
-    <Updaters />
-    <ThemeProvider>
-      <>
-        <GlobalStyle />
-        <App />
-      </>
-    </ThemeProvider>
-  </ContextProviders>,
+  <Main />,
   document.getElementById('root')
 )

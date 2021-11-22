@@ -66,7 +66,9 @@ const LayoutWrapper = ({ children, savedOpen, setSavedOpen }) => {
   return (
     <>
       <ContentWrapper open={savedOpen}>
+
         <SideNav />
+
         <Center id="center">{children}</Center>
         <Right open={savedOpen}>
           <PinnedData open={savedOpen} setSavedOpen={setSavedOpen} />
@@ -82,6 +84,8 @@ function App() {
   const globalData = useGlobalData()
   const globalChartData = useGlobalChartData()
   const latestBlock = useLatestBlock()
+
+  console.log(globalData)
 
   return (
     <ApolloProvider client={client}>

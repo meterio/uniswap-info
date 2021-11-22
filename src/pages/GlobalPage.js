@@ -12,6 +12,8 @@ import GlobalChart from '../components/GlobalChart'
 import Search from '../components/Search'
 import GlobalStats from '../components/GlobalStats'
 
+import NetworkDropDown from '../components/DropdownSelect/networkDropDown'
+
 import { useGlobalData, useGlobalTransactions } from '../contexts/GlobalData'
 import { useAllPairData } from '../contexts/PairData'
 import { useMedia } from 'react-use'
@@ -70,7 +72,12 @@ function GlobalPage() {
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
-            <TYPE.largeHeader>{below800 ? 'Protocol Analytics' : 'Voltswap Protocol Analytics'}</TYPE.largeHeader>
+            <div style={{ display: 'inline-flex' }}>
+              <TYPE.largeHeader>{below800 ? 'Protocol Analytics' : 'Voltswap Protocol Analytics'}</TYPE.largeHeader>
+              <div style={{ marginLeft: "60%" }}>
+                <NetworkDropDown />
+              </div>
+            </div>
             <Search />
             <GlobalStats />
           </AutoColumn>
