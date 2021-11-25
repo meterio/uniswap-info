@@ -69,7 +69,7 @@ function Meter() {
 function Main() {
 
   let selected_network = window.sessionStorage.getItem("chainId")
-  console.log(selected_network)
+
 
 
   if (!selected_network) {

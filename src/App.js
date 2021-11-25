@@ -85,7 +85,7 @@ function App() {
   const globalChartData = useGlobalChartData()
   const latestBlock = useLatestBlock()
 
-  console.log(globalData)
+
 
   return (
     <ApolloProvider client={client}>
