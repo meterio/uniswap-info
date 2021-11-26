@@ -5,7 +5,7 @@ import { isAddress } from '../../utils/index.js'
 import PlaceHolder from '../../assets/placeholder.png'
 import EthereumLogo from '../../assets/eth.png'
 
-import { meter_token_list } from './getTokenList'
+import { tokens } from './swap_tokens_list.json'
 
 const BAD_IMAGES = {}
 
@@ -75,12 +75,14 @@ export default function TokenLogo({ symbol, address, header = false, size = '24p
   var path = `https://raw.githubusercontent.com/meterio/token-list/master/data/${symbol ? symbol : 'MTRG'}/logo.png`
 
   symbol = symbol === 'MTR' ? 'MTRG' : symbol;
-  if (meter_token_list && meter_token_list.tokens) {
-    meter_token_list.tokens.map((token_data) => {
 
-      path = web3.utils.toChecksumAddress(token_data.address) === web3.utils.toChecksumAddress(address) ? token_data.logoURI : path
-    })
-  }
+  tokens.map((token_data) => {
+
+
+
+    path = web3.utils.toChecksumAddress(token_data.address) === web3.utils.toChecksumAddress(address) ? token_data.logoURI : path
+  })
+
 
 
   return (

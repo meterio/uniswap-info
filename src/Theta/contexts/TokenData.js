@@ -262,6 +262,8 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
           twoDayHistory?.txCount ?? 0
         )
 
+
+
         const currentLiquidityUSD = data?.totalLiquidity * ethPrice * data?.derivedETH
         const oldLiquidityUSD = oneDayHistory?.totalLiquidity * ethPriceOld * oneDayHistory?.derivedETH
 
@@ -273,6 +275,7 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
 
         // set data
         data.priceUSD = data?.derivedETH * ethPrice
+
         data.totalLiquidityUSD = currentLiquidityUSD
         data.oneDayVolumeUSD = parseFloat(oneDayVolumeUSD)
         data.volumeChangeUSD = volumeChangeUSD

@@ -169,7 +169,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://farm.voltswap.finance" target="_blank">
+              <Link href="https://thetavoltswapfarm.surge.sh" target="_blank">
                 Farm
               </Link>
             </HeaderText>
