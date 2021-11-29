@@ -68,6 +68,30 @@ function Meter() {
 
 function Main() {
 
+  const queryString = window.location.href.split('?')[1]
+  let networkId = 'meter'
+
+
+  if (queryString) {
+    const [splitQueryString] = queryString.split('=')
+
+    if (splitQueryString && splitQueryString === 'network') {
+      [, networkId] = queryString.split('=')
+
+      if (networkId && networkId === 'theta') {
+        window.localStorage.setItem('chainId', '361')
+        return <Theta />
+      }
+
+      if (networkId && networkId === 'meter') {
+        window.localStorage.setItem('chainId', '82')
+        return <Meter />
+      }
+    }
+  }
+
+
+
   let selected_network = window.sessionStorage.getItem("chainId")
 
 

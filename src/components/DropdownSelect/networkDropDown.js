@@ -14,10 +14,12 @@ export default function NetworkDropDown() {
     const toggleDropdown = () => setOpen(!isOpen);
 
     const handleItemClick = (id) => {
+
         selectedItem == id ? setSelectedItem(null) : setSelectedItem(id);
         setOpen(true)
         window.sessionStorage.setItem("chainId", id)
-        window.location.reload()
+        window.location.href = '/'
+
     }
 
     return (
