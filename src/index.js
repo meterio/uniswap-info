@@ -115,16 +115,12 @@ function Main() {
   }
 
   if (selected_network === '82') {
-    // urlParams.set('network', 'meter');
 
-    // window.location.search = urlParams
     return <Meter />
   }
 
   if (selected_network === '361') {
-    // urlParams.set('network', 'theta');
 
-    // window.location.search = urlParams
     return <Theta />
   }
 
