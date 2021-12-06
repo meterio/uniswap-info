@@ -87,6 +87,7 @@ function App() {
 
 
 
+
   return (
     <ApolloProvider client={client}>
       <AppWrapper>
@@ -101,6 +102,7 @@ function App() {
               <Route
                 exacts
                 strict
+
                 path="/token/:tokenAddress"
                 render={({ match }) => {
                   if (OVERVIEW_TOKEN_BLACKLIST.includes(match.params.tokenAddress.toLowerCase())) {

@@ -193,6 +193,12 @@ function PairPage({ pairAddress, history }) {
       behavior: 'smooth',
       top: 0
     })
+
+    const params = new URLSearchParams()
+
+    params.append("network", "meter")
+
+    history.push({ search: params.toString() })
   }, [])
 
   const [savedPairs, addPair] = useSavedPairs()

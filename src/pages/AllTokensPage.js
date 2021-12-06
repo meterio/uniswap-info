@@ -15,6 +15,7 @@ function AllTokensPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+
   }, [])
 
   const below600 = useMedia('(max-width: 800px)')

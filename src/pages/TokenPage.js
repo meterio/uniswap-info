@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import 'feather-icons'
-import { withRouter } from 'react-router-dom'
+import { withRouter, useHistory } from 'react-router-dom'
+
 import { Text } from 'rebass'
 import styled from 'styled-components'
 import Link from '../components/Link'
@@ -114,6 +115,7 @@ function TokenPage({ address, history }) {
 
   const allPairs = useTokenPairs(address)
 
+
   // pairs to show in pair list
   const fetchedPairsList = useDataForList(allPairs)
 
@@ -160,11 +162,23 @@ function TokenPage({ address, history }) {
   const [savedTokens, addToken] = useSavedTokens()
   const listedTokens = useListedTokens()
 
+
+
+
+
+
   useEffect(() => {
+
     window.scrollTo({
       behavior: 'smooth',
       top: 0
     })
+
+    const params = new URLSearchParams()
+
+    params.append("network", "meter")
+
+    history.push({ search: params.toString() })
   }, [])
 
   return (

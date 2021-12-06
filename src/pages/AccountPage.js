@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useUserTransactions, useUserPositions } from '../contexts/User'
 import TxnList from '../components/TxnList'
 import Panel from '../components/Panel'
+import { useHistory } from 'react-router-dom'
 import { formattedNum } from '../utils'
 import Row, { AutoRow, RowFixed, RowBetween } from '../components/Row'
 import { AutoColumn } from '../components/Column'
@@ -125,6 +126,8 @@ function AccountPage({ account }) {
 
   const dynamicPositions = activePosition ? [activePosition] : positions
 
+  const history = useHistory()
+
   const aggregateFees = dynamicPositions?.reduce(function (total, position) {
     return total + position.fees.sum
   }, 0)
@@ -146,6 +149,12 @@ function AccountPage({ account }) {
       behavior: 'smooth',
       top: 0
     })
+
+    const params = new URLSearchParams()
+
+    params.append("network", "meter")
+
+    history.push({ search: params.toString() })
   }, [])
 
   const below600 = useMedia('(max-width: 600px)')

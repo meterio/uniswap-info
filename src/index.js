@@ -72,6 +72,7 @@ function Main() {
   let networkId = 'meter'
 
 
+
   if (queryString) {
     const [splitQueryString] = queryString.split('=')
 
@@ -80,10 +81,14 @@ function Main() {
 
       if (networkId && networkId === 'theta') {
         window.localStorage.setItem('chainId', '361')
+
         return <Theta />
       }
 
       if (networkId && networkId === 'meter') {
+
+
+
         window.localStorage.setItem('chainId', '82')
         return <Meter />
       }
@@ -96,7 +101,12 @@ function Main() {
 
 
 
+
+
   if (!selected_network) {
+
+
+
 
     return (
       <Meter />
@@ -105,10 +115,16 @@ function Main() {
   }
 
   if (selected_network === '82') {
+    // urlParams.set('network', 'meter');
+
+    // window.location.search = urlParams
     return <Meter />
   }
 
   if (selected_network === '361') {
+    // urlParams.set('network', 'theta');
+
+    // window.location.search = urlParams
     return <Theta />
   }
 

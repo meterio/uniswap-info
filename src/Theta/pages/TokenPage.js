@@ -165,6 +165,13 @@ function TokenPage({ address, history }) {
       behavior: 'smooth',
       top: 0
     })
+
+    const params = new URLSearchParams()
+
+    params.append("network", "theta")
+
+    history.push({ search: params.toString() })
+
   }, [])
 
   return (
