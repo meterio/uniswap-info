@@ -8,7 +8,7 @@ import './networkDropdown.css'
 export default function NetworkDropDown() {
     const [isOpen, setOpen] = useState(false);
     const [items, setItem] = useState([{ id: 82, label: "Meter" }, { id: 361, label: "Theta" }, { id: 1284, label: "Moonbeam" }]);
-    const [selectedItem, setSelectedItem] = useState(82);
+    const [selectedItem, setSelectedItem] = useState(1284);
 
 
     const toggleDropdown = () => setOpen(!isOpen);

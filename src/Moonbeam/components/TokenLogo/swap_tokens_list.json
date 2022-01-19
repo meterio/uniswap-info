@@ -1,0 +1,114 @@
+{
+    "name": "Voltswap Default List",
+    "timestamp": "",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+    },
+    "tags": {},
+    "logoURI": "",
+    "keywords": [
+        "voltswap",
+        "default",
+        "meter"
+    ],
+    "tokens": [
+        {
+            "name": "ETH from Ethereum on Moonbeam",
+            "address": "0x3674D64AaB971aB974B2035667a4B3d09B5ec2B3",
+            "symbol": "WETH",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/ETH/logo.png"
+        },
+        {
+            "name": "WBTC from Ethereum on Theta",
+            "address": "0xf64FA5155D8cc578D473A21FB67507DDCbB80D21",
+            "symbol": "WBTC",
+            "decimals": 8,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/WBTC/logo.png"
+        },
+        {
+            "name": "Volt from Meter on Theta",
+            "address": "0xE6a991Ffa8CfE62B0bf6BF72959A3d4f11B2E0f5",
+            "symbol": "VOLT",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/VOLT/logo.png"
+        },
+        {
+            "name": "USDT from Ethereum on Theta",
+            "address": "0x3c751Feb00364CA9e2d0105c40F0b423abf1DEE3",
+            "symbol": "USDT",
+            "decimals": 6,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/USDT/logo.png"
+        },
+        {
+            "name": "USDC from MoonRiver on Moonbeam",
+            "address": "0x89C36bB2E30efCA78bDEB99101C1Ac1FfcB6a30e",
+            "symbol": "USDC.movr",
+            "decimals": 6,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/USDC/logo.png"
+        },
+        {
+            "name": "Meter Governance mapped by Meter.io",
+            "address": "0xBd2949F67DcdC549c6Ebe98696449Fa79D988A9F",
+            "symbol": "MTRG",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/MTRG/logo.png"
+        },
+        {
+            "name": "MOVR from MoonRiver",
+            "address": "0x0B5B9806b1B202e22aA26Cfd527fDCafEF9eDAcf",
+            "symbol": "MOVR",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/MOVR/logo.png"
+        },
+        {
+            "name": "GLMR",
+            "address": "0xAcc15dC74880C9944775448304B263D191c6077F",
+            "symbol": "GLMR",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/GLMR/logo.png"
+        },
+        {
+            "name": "BNB from BSC on Moonbeam",
+            "address": "0xdFf772186aCe9b5513FB46d7B05b36Efa0A4a20d",
+            "symbol": "BNB.bsc",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/BNB/logo.png"
+        },
+        {
+            "name": "BUSD from BSC on Moonbeam",
+            "address": "0x7B37d0787A3424A0810E02b24743a45eBd5530B2",
+            "symbol": "BUSD.bsc",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/BUSD/logo.png"
+        },
+        {
+            "name": "Crowns",
+            "address": "0x1aBB8FdE5e64be3419FceF80df335C68dD2956C7",
+            "symbol": "CWS",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/CWS/logo.png"
+        },
+        {
+            "name": "Moonscape",
+            "address": "0xB60590313975f0d98821B6Cab5Ea2a6d9641D7B6",
+            "symbol": "MSCP",
+            "decimals": 18,
+            "chainId": 1284,
+            "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/MSCP/logo.png"
+        }
+    ]
+}
