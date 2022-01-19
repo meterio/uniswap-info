@@ -213,6 +213,7 @@ export default function Provider({ children }) {
  */
 async function getGlobalData(ethPrice, oldEthPrice) {
   // data for each day , historic data used for % changes
+
   let data = {}
   let oneDayData = {}
   let twoDayData = {}
@@ -232,6 +233,8 @@ async function getGlobalData(ethPrice, oldEthPrice) {
       utcOneWeekBack,
       utcTwoWeeksBack
     ])
+
+
 
     // fetch the global data
     let result = await client.query({
@@ -292,18 +295,24 @@ async function getGlobalData(ethPrice, oldEthPrice) {
       // console.log(pairSum.toNumber())
 
       // format the total liquidity in USD
-      data.totalLiquidityUSD = data.totalLiquidityETH * ethPrice
+      if (ethPrice) {
+        data.totalLiquidityUSD = data.totalLiquidityETH * ethPrice
+      }
+
+
 
       const liquidityChangeUSD = getPercentChange(
         data.totalLiquidityETH * ethPrice,
         oneDayData.totalLiquidityETH * oldEthPrice
       )
 
+
       // add relevant fields with the calculated amounts
       data.oneDayVolumeUSD = oneDayVolumeUSD
       data.oneWeekVolume = oneWeekVolume
       data.weeklyVolumeChange = weeklyVolumeChange
       data.volumeChangeUSD = volumeChangeUSD
+
       data.liquidityChangeUSD = liquidityChangeUSD
       data.oneDayTxns = oneDayTxns
       data.txnChange = txnChange
@@ -548,6 +557,7 @@ export function useGlobalData() {
   const [ethPrice, oldEthPrice] = useEthPrice()
 
 
+
   const data = state?.globalData
 
 
@@ -556,6 +566,7 @@ export function useGlobalData() {
 
   useEffect(() => {
     async function fetchData() {
+
       let globalData = await getGlobalData(ethPrice, oldEthPrice)
       globalData && update(globalData)
 
@@ -568,13 +579,13 @@ export function useGlobalData() {
       updateAllTokensInUniswap(allTokens)
     }
 
-    // if (!data && !ethPrice && !oldEthPrice) {
-    //   fetchData()
-    // }
-
     if (!data && !ethPrice && !oldEthPrice) {
       fetchData()
     }
+
+
+
+
 
 
   }, [ethPrice, oldEthPrice, update, data, updateAllPairsInUniswap, updateAllTokensInUniswap])
