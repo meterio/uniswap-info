@@ -169,7 +169,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://thetafarm.voltswap.finance" target="_blank">
+              <Link href="https://moonfarm.voltswap.finance" target="_blank">
                 Farm
               </Link>
             </HeaderText>
@@ -181,7 +181,7 @@ function SideNav({ history }) {
             </HeaderText>
             <HeaderText>
               <Link href="https://t.me/Meter_IO" target="_blank">
-                Twitter
+                Telegram
               </Link>
             </HeaderText>
 

@@ -181,7 +181,7 @@ function SideNav({ history }) {
             </HeaderText>
             <HeaderText>
               <Link href="https://t.me/Meter_IO" target="_blank">
-                Twitter
+                Telegram
               </Link>
             </HeaderText>
 

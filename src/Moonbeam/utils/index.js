@@ -318,7 +318,7 @@ export const setThemeColor = theme => document.documentElement.style.setProperty
 export const Big = number => new BigNumber(number)
 
 export const urls = {
-  showTransaction: tx => `https://blockscout.moonbeam.network/txs/${tx}/`,
+  showTransaction: tx => `https://blockscout.moonbeam.network/tx/${tx}/`,
   showAddress: address => `https://blockscout.moonbeam.network/${address}/`,
   showToken: address => `https://blockscout.moonbeam.network/${address}/`,
   showBlock: block => `https://blockscout.moonbeam.network/${block}/`
