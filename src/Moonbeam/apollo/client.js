@@ -12,7 +12,7 @@ export const client = new ApolloClient({
 
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://54.254.214.134:8030/graphql'
+    uri: 'https://geyser-graph-on-moonbeam.voltswap.finance:8030/graphql'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true
