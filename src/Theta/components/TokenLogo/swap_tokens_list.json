@@ -85,6 +85,14 @@
             "decimals": 18,
             "chainId": 361,
             "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/TFUEL/logo.png"
-        }
+        },
+        {
+        "name": "Theta Drop",
+        "address": "0x1336739b05c7ab8a526d40dcc0d04a826b5f8b03",
+        "symbol": "TDROP",
+        "decimals": 18,
+        "chainId": 361,
+        "logoURI": "https://raw.githubusercontent.com/meterio/token-list/master/data/TDROP/logo.png"
+      }
     ]
 }
