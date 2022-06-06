@@ -5,6 +5,7 @@ orbs:
   slack: circleci/slack@4.4.4
 jobs:
   build_and_deploy_mainnet:
+    resource_class: large
     docker:
       - image: 'cimg/node:16.7'
     steps:
@@ -15,9 +16,15 @@ jobs:
       - run:
           name: install awscli v2
           command: sudo ./aws/install
+      - restore_cache:
+          key: uninfo-deps-{{ checksum "package.json" }}
       - run:
           name: install yarn dependencies
           command: yarn
+      - save_cache:
+          key: uninfo-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run:
           name: production build
           command: CI=false NODE_ENV=production yarn build
@@ -40,6 +47,7 @@ workflows:
           context:
             - new-aws-s3
             - slack-secrets
+            - uniswap-info-env
           filters:
             tags:
               only: /^v.*/
