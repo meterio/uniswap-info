@@ -30,10 +30,10 @@ jobs:
           command: CI=false NODE_ENV=production yarn build
       - run:
           name: s3 sync
-          command: aws s3 sync ./build/ s3://info.voltswap/ --delete --acl public-read
+          command: aws s3 sync ./build/ s3://info.voltswap.finance/ --delete
       - run:
           name: invalidation
-          command: aws cloudfront create-invalidation --distribution-id EQKL5C4QOPA6I --paths "/*"
+          command: aws cloudfront create-invalidation --distribution-id E27CLAVHYJ840L --paths "/*"
       - slack/notify:
           event: fail
           template: basic_fail_1
@@ -45,7 +45,7 @@ workflows:
     jobs:
       - build_and_deploy_mainnet:
           context:
-            - new-aws-s3
+            - aws-2023
             - slack-secrets
             - uniswap-info-env
           filters:
