@@ -4,7 +4,7 @@
 NODE_ENV=production yarn build
 
 # copy dist to mainnet S3
-aws s3 sync ./build/ s3://info.voltswap/ --delete --acl public-read
+aws s3 sync ./build/ s3://info.voltswap.finance/ --delete
 
 # invalidate mainnet cloudfront cache
-aws cloudfront create-invalidation --distribution-id EQKL5C4QOPA6I --paths "/*"
+aws cloudfront create-invalidation --distribution-id E27CLAVHYJ840L --paths "/*"
